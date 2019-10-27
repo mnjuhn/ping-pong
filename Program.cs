@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +15,8 @@ namespace PingPong
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+      DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
+      CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
