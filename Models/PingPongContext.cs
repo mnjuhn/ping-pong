@@ -29,15 +29,36 @@ namespace PingPong.Models
       }
       modelBuilder.Entity<Player>().HasData(new Player
       {
-        id = 1,
+        Id = 1,
         FirstName = "Uncle",
-        LastName = "Bob"
-
+        LastName = "Bob",
+        Age = 50,
+        SkillLevel = Player.Level.Expert,
+        email = "bob@gmail.com"
       }, new Player
       {
-        id = 2,
+        Id = 2,
         FirstName = "Jan",
-        LastName = "Kirsten"
+        LastName = "Kirsten",
+        Age = 40,
+        SkillLevel = Player.Level.Advanced,
+        email = "jan@gmail.com",
+      }, new Player
+      {
+        Id = 3,
+        FirstName = "Lil",
+        LastName = "Jen",
+        Age = 30,
+        SkillLevel = Player.Level.Beginner,
+        email = "jen@gmail.com",
+      }, new Player
+      {
+        Id = 4,
+        FirstName = "Big",
+        LastName = "Ben",
+        Age = 45,
+        SkillLevel = Player.Level.Intermediate,
+        email = "jan@gmail.com",
       });
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

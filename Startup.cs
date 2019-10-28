@@ -28,7 +28,9 @@ namespace PingPong
     public void ConfigureServices(IServiceCollection services)
     {
 
-      //services.AddDbContext<PingPongContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:DefaultConnection"]));
+      services.AddDbContext<PingPongContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddDbContext<PingPongContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:pingpong"]));
       services.AddControllers();
     }
 

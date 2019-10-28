@@ -26,23 +26,22 @@ namespace PingPong.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<Player> Get()
         {
       var context = new PingPongContext();
-      var players = context.Players;
-      var cnt = players.Count();
+      var players = context.Players.ToList();
 //      var foo = players.Where(s => s.FirstName == "Ted").FirstOrDefault<Player>();
       var foo = players.FirstOrDefault<Player>();
+      return players;
 
-      var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            /*return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-                //Summary = foo.FirstName
+                //Summary = Summaries[rng.Next(Summaries.Length)]
+                Summary = foo.FirstName
             })
-            .ToArray();
+            .ToArray();*/
 
         }
     }
