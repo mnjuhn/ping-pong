@@ -11,7 +11,7 @@ namespace PingPong.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PlayerController : ControllerBase
+  public class PlayerController : ControllerBase
     {
         private readonly ILogger<PlayerController> _logger;
 
@@ -25,7 +25,6 @@ namespace PingPong.Controllers
         {
           var context = new PingPongContext();
           var players = context.Players.ToList();
-          var foo = players.FirstOrDefault<Player>();
           return players;
 
         }

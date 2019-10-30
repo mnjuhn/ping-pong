@@ -27,7 +27,7 @@ export class PlayerService {
     }
 
     public getAllPlayers(): Observable <PlayerComponent[]> {
-        return this.httpService.get<PlayerComponent[]>(`http://localhost:5000/players`).pipe(
+        return this.httpService.get<PlayerComponent[]>(`http://localhost:5000/player`).pipe(
             map(data => data.map(data => new PlayerComponent().deserialize(data)))
         );
     }

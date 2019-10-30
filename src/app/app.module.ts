@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { RouterModule, Routes } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
 
-const apppRoutes: Routes = [
-    { path: '', component: PlayerComponent }
+const appRoutes: Routes = [
+    { path: 'player', component: PlayerComponent }
 ]
 
 @NgModule({
@@ -15,7 +16,9 @@ const apppRoutes: Routes = [
     PlayerComponent
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      RouterModule.forRoot(appRoutes),
+      HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

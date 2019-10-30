@@ -24,13 +24,30 @@ namespace PingPong
 
     public IConfiguration Configuration { get; }
 
+    //readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
 
       services.AddDbContext<PingPongContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
       services.AddDbContext<PingPongContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:pingpong"]));
+
+      //services.AddCors(options =>
+      //{
+      //  options.AddPolicy(MyAllowSpecificOrigins,
+      //  builder =>
+      //  {
+      //    builder.WithOrigins("http://localhost:4200",
+      //                            "http://localhost:5000")
+      //                        .AllowAnyOrigin()
+      //                        .AllowAnyMethod()
+      //                        .AllowAnyHeader();
+
+      //  });
+      //});
       services.AddControllers();
     }
 
@@ -46,12 +63,30 @@ namespace PingPong
 
       app.UseRouting();
 
+      //app.UseCors();
+
       app.UseAuthorization();
+
+      //app.UseCors(MyAllowSpecificOrigins);
 
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
       });
+
+      //app.UseCors(builder =>
+      //      builder.WithOrigins("http://localhost:4200", "http://localhost:5000")
+      //          .AllowAnyHeader()
+       //         .AllowAnyMethod());
+
+      // Add header:
+      //app.Use((context, next) =>
+      //{
+      //  context.Response.Headers["Access-Control-Allow-Origin"] = "*";
+      //  return next.Invoke();
+      //});
+
+     
     }
   }
 }
