@@ -1,1 +1,12 @@
+<div style="width: 400px; margin: auto;">
+  <h2>Players</h2>
 
+  <div *ngIf="players">
+    <hr>
+    <ul>
+      <li *ngFor="let player of players;">
+        {{player.firstName}} {{player.lastName}}
+      </li>
+    </ul>
+  </div>
+</div>

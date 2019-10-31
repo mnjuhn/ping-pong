@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlayerComponent } from './player/player.component';
+import { PlayerModel } from './player/player.model';
 import { PlayerService } from './services/player';
 
 @Component({
@@ -10,24 +10,7 @@ import { PlayerService } from './services/player';
 export class AppComponent {
    title = 'PingPong';
 
-
-    public playerId: number;
-
-    public player: PlayerComponent;
-
-    public players: PlayerComponent[];
-
-    constructor(private playerService: PlayerService) {
-        this.getAllUsers();
+    constructor() {
     }
 
-    public getUser() {
-        this.playerService.getPlayer(this.playerId).subscribe(player => this.player = player);
-    }
-
-    public getAllUsers() {
-        this.playerService.getAllPlayers().subscribe(players => {
-            this.players = players
-        });
-    }
 }

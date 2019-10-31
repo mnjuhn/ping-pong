@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { Deserializable } from './deserializable.model';
+import { PlayerService } from '../services/player';
+import { PlayerModel } from './player.model';
 
 @Component({
   selector: 'app-player',
@@ -7,30 +8,32 @@ import { Deserializable } from './deserializable.model';
   styleUrls: ['./player.component.css']
 })
 
-export class PlayerComponent implements OnInit, Deserializable {
+export class PlayerComponent implements OnInit {
 
-    public firstName: string;
-    public lastName: string;
-    public age: Number;
-    public skillLevel: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
-    public email: string;
+    public playerId: number;
 
-    constructor() {
+    public player: PlayerModel;
+
+    public players: PlayerModel[];
+
+    constructor(private playerService: PlayerService) {
 
     }
 
     ngOnInit() {
+        this.getAllUsers();
 
     }
 
-    deserialize(input: any): this {
-        Object.assign(this, input)
+    
+    public getUser() {
+    this.playerService.getPlayer(this.playerId).subscribe(player => this.player = player);
+}
 
-        return this;
-    }
-
-    getFullName() {
-        return this.firstName + ' ' + this.lastName;
-    }
+    public getAllUsers() {
+    this.playerService.getAllPlayers().subscribe(players => {
+        this.players = players
+    });
+}
 
 }

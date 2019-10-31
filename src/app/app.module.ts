@@ -3,22 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
+import { PlayerEditor } from './player/player.editor';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormControl, FormGroupDirective } from '@angular/forms';
 
 const appRoutes: Routes = [
-    { path: 'player', component: PlayerComponent }
+    { path: 'player', component: PlayerComponent },
+    { path: 'player-add', component: PlayerEditor }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerComponent
+        PlayerComponent,
+        PlayerEditor    
   ],
   imports: [
       BrowserModule,
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

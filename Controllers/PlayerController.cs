@@ -38,8 +38,8 @@ namespace PingPong.Controllers
           return player;
         }
 
-        [HttpPost]
-        public void Post(Player player)
+        [HttpPut]
+        public void Put(Player player)
         {
           var context = new PingPongContext();
           var players = context.Players.ToList();
@@ -53,8 +53,8 @@ namespace PingPong.Controllers
           context.Entry(entity).CurrentValues.SetValues(player);
         }
 
-        [HttpPut]
-        public void Put(Player player)
+        [HttpPost]
+        public void Post(Player player)
         {
           var context = new PingPongContext();
           var players = context.Players.ToList();
