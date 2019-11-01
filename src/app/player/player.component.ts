@@ -22,18 +22,11 @@ export class PlayerComponent implements OnInit {
 
     ngOnInit() {
         this.getAllUsers();
-
     }
 
-    
-    public getUser() {
-    this.playerService.getPlayer(this.playerId).subscribe(player => this.player = player);
-}
-
     public getAllUsers() {
-    this.playerService.getAllPlayers().subscribe(players => {
-        this.players = players
-    });
-}
-
+      this.playerService.getAllPlayers().subscribe(players => {
+          this.players = players
+      });
+    }
 }

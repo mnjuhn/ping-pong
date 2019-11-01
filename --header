@@ -1,0 +1,6 @@
+HTTP/1.1 307 Temporary Redirect
+Date: Fri, 01 Nov 2019 00:46:16 GMT
+Server: Kestrel
+Content-Length: 0
+Location: https://localhost:5001/player
+

@@ -1,11 +1,13 @@
 <div style="width: 400px; margin: auto;">
   <h2>Players</h2>
-
+  <a href="/player-add" class="btn btn-default">Add New Player</a>
   <div *ngIf="players">
     <hr>
     <ul>
       <li *ngFor="let player of players;">
         {{player.firstName}} {{player.lastName}}
+        <a href="player/{{player.id}}" class="btn btn-default">Edit Player</a>
+        <a href="player/delete/{{player.id}}" class="btn btn-default">delete Player</a>
       </li>
     </ul>
   </div>

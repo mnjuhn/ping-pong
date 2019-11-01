@@ -2,12 +2,16 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Deserializable } from './deserializable.model';
 
 
+
 export class PlayerModel implements Deserializable {
 
-    public firstName: string = "asfasf";
+    public skillLevels = ["Beginner", "Intermediate", "Advanced", "Expert"];
+
+    public Id: Number;
+    public firstName: string;
     public lastName: string;
     public age: Number;
-    public skillLevel: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+    public skillLevel: string;
     public email: string;
 
     constructor() {

@@ -4,6 +4,7 @@ import { AppComponent } from '../app.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormControl, FormGroupDirective } from '@angular/forms';
 import { PlayerService } from '../services/player';
 import { PlayerModel } from './player.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-player',
@@ -34,35 +35,47 @@ export class PlayerEditor implements OnInit {
 
     public playerForm: FormGroup;
 
-    constructor(fb: FormBuilder, private playerService: PlayerService) {
+
+    constructor(fb: FormBuilder, private playerService: PlayerService, private route: ActivatedRoute) {
         this.playerForm = fb.group({
             firstName: '',
             lastName: '',
             age: '',
-            skillLevel: '',
-            email: ''
+            email: '',
+            skillLevel: ''
         })
     }
 
     ngOnInit() {
+        // get player Id from URL
+        this.playerId = +this.route.snapshot.paramMap.get('Id');
         this.getPlayer();
     }
 
     public getPlayer() {
-        this.playerService.getPlayer(this.playerId).subscribe(player => this.player = player);
+        this.playerService.getPlayer(this.playerId).subscribe(player => { this.player = player; this.updateTemplate() } );
     }
 
-    public insertPlayer() {
-        this.playerService.insertPlayer(this.player).subscribe(player => this.player = player);
+    private updateTemplate() {
+        this.playerForm.get("firstName").setValue(this.player.firstName);
+        this.playerForm.get("lastName").setValue(this.player.lastName);
+        this.playerForm.get("age").setValue(this.player.age);
+        this.playerForm.get("email").setValue(this.player.email);
+        this.playerForm.get("skillLevel").setValue(this.player.skillLevel);
     }
 
     public updatePlayer() {
-        this.playerService.updatePlayer(this.player).subscribe(player => this.player = player);
+        this.playerService.updatePlayer(this.player).subscribe();
     }
 
     submitForm(player) {
-        if (player.email && player.firstName && player.lastName && player.skillLevel) {
-            this.insertPlayer();
+        player.Id = this.playerId;
+        if (player.email && player.firstName && player.lastName) {
+            this.player = player;
+            this.updatePlayer();
         }
+        // redirect to main page
+        location.replace('/player');
+
     }
 }

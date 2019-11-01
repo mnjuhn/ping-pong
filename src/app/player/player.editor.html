@@ -2,25 +2,26 @@
   <h2>Add Player</h2>
   <form name="form" [formGroup]="playerForm" (ngSubmit)=submitForm(playerForm.value) role="form">
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" aria-describedby="sizing-addon1" />
+      <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" aria-describedby="sizing-addon1" [value]="player?.firstName"/>
     </div>
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" aria-describedby="sizing-addon1" />
+      <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" aria-describedby="sizing-addon1" [value]="player?.lastName"/>
     </div>
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" formControlName="email" placeholder="Email" aria-describedby="sizing-addon1" />
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" aria-describedby="sizing-addon1" [value]="player?.email"/>
     </div>
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" formControlName="age" placeholder="Age" aria-describedby="sizing-addon1" />
+      <input type="text" class="form-control" formControlName="age" placeholder="Age" aria-describedby="sizing-addon1"  [value]="player?.age"/>
     </div>
     <div class="dropdown">
-      <select id="skill-level" formControlName="skillLevel">
-        <option>Pick a Skill Level</option>
-        <option value="1">Beginner</option>
-        <option value="2">Intermediate</option>
-        <option value="3">Advanced</option>
-        <option value="4">Export</option>
+      <select id="skill-level">
+        <option *ngFor="let skillLevel of player?.skillLevels; let i = index" [value]="i" [selected]="i == player.skillLevel">
+          {{skillLevel}}
+        </option>
       </select>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </div>
