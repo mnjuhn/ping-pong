@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
 using PingPong.Models;
+using System.Web.Http.Cors;
 
 namespace PingPong.Controllers
 {
@@ -21,6 +22,7 @@ namespace PingPong.Controllers
     }
 
     [HttpGet]
+    [Microsoft.AspNetCore.Cors.EnableCors("DevEnvironment")]
     public IEnumerable<Player> Get()
     {
       var context = new PingPongContext();
@@ -30,6 +32,7 @@ namespace PingPong.Controllers
     }
 
     [HttpGet("{Id}")]
+    [Microsoft.AspNetCore.Cors.EnableCors("DevEnvironment")]
     public Player Get(int Id)
     {
       var context = new PingPongContext();
@@ -39,6 +42,7 @@ namespace PingPong.Controllers
     }
 
     [HttpPut]
+    [Microsoft.AspNetCore.Cors.EnableCors("DevEnvironment")]
     public void Put(Player player)
     {
       var context = new PingPongContext();
@@ -60,6 +64,7 @@ namespace PingPong.Controllers
     }
 
     [HttpPost]
+    [Microsoft.AspNetCore.Cors.EnableCors("DevEnvironment")]
     public void Post(Player player)
     {
       try
@@ -76,12 +81,17 @@ namespace PingPong.Controllers
       }
     }
 
-    [HttpDelete]
+    [HttpDelete("{Id}")]
+    [Microsoft.AspNetCore.Cors.EnableCors("DevEnvironment")]
     public void Delete(int id)
     {
-      Console.WriteLine("TEST");
-      Console.WriteLine(id);
       var context = new PingPongContext();
+      var player = new Player() { Id = id };
+      context.Players.Attach(player);               
+      context.Players.Remove(player);
+      context.SaveChanges();
+
+      /*var context = new PingPongContext();
       var player = context.Players.ToList();
       player.Find(i => i.Id == id);
 
@@ -89,7 +99,7 @@ namespace PingPong.Controllers
       {
         context.Remove(player);
         context.SaveChanges();
-      }
+      }*/
     }
   }
 }

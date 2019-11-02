@@ -34,20 +34,15 @@ namespace PingPong
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
       services.AddDbContext<PingPongContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:pingpong"]));
+      //services.AddCors();
 
-      //services.AddCors(options =>
-      //{
-      //  options.AddPolicy(MyAllowSpecificOrigins,
-      //  builder =>
-      //  {
-      //    builder.WithOrigins("http://localhost:4200",
-      //                            "http://localhost:5000")
-      //                        .AllowAnyOrigin()
-      //                        .AllowAnyMethod()
-      //                        .AllowAnyHeader();
+      services.AddCors(o => o.AddPolicy("DevEnvironment", builder =>
+      {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+      }));
 
-      //  });
-      //});
       services.AddControllers().AddNewtonsoftJson();
     }
 
@@ -59,13 +54,16 @@ namespace PingPong
         app.UseDeveloperExceptionPage();
       }
 
-      app.UseHttpsRedirection();
+     
+      //app.UseHttpsRedirection();
 
       app.UseRouting();
 
-      //app.UseCors();
-
+      
       app.UseAuthorization();
+
+      app.UseCors("DevEnvironment");
+
 
       //app.UseCors(MyAllowSpecificOrigins);
 
@@ -74,10 +72,12 @@ namespace PingPong
         endpoints.MapControllers();
       });
 
+      //app.UseCors("AllowMyOrigin");
+
       //app.UseCors(builder =>
       //      builder.WithOrigins("http://localhost:4200", "http://localhost:5000")
       //          .AllowAnyHeader()
-       //         .AllowAnyMethod());
+      //         .AllowAnyMethod());
 
       // Add header:
       //app.Use((context, next) =>
@@ -86,7 +86,7 @@ namespace PingPong
       //  return next.Invoke();
       //});
 
-     
+
     }
   }
 }
