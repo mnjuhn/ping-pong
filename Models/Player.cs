@@ -21,7 +21,7 @@ namespace PingPong.Models
     public string LastName { get; set; }
     public string FirstName { get; set; }
     public short Age { get; set; }
-    public Level SkillLevel { get; set; }
+    public int SkillLevel { get; set; }
     public string email { get; set; }
 
   }

@@ -71,11 +71,11 @@ export class PlayerEditor implements OnInit {
     submitForm(player) {
         player.Id = this.playerId;
         if (player.email && player.firstName && player.lastName) {
+
             this.player = player;
             this.updatePlayer();
         }
         // redirect to main page
         location.replace('/player');
-
     }
 }

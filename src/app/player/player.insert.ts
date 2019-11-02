@@ -7,7 +7,7 @@ import { PlayerModel } from './player.model';
 
 @Component({
     selector: 'app-player',
-    templateUrl: './player.editor.html',
+    templateUrl: './player.insert.html',
     styleUrls: ['./player.component.css']
 })
 
@@ -45,11 +45,7 @@ export class PlayerInsert implements OnInit {
     }
 
     ngOnInit() {
-        this.getPlayer();
-    }
-
-    public getPlayer() {
-        this.playerService.getPlayer(this.playerId).subscribe(player => this.player = player);
+        this.player = new PlayerModel();
     }
 
     public insertPlayer() {
@@ -58,9 +54,11 @@ export class PlayerInsert implements OnInit {
 
     submitForm(player) {
 
-        if (player.email && player.firstName && player.lastName && player.skillLevel) {
+        if (player.email && player.firstName && player.lastName) {
             this.player = player;
             this.insertPlayer();
         }
+        // redirect to main page
+        location.replace('/player');
     }
 }

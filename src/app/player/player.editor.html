@@ -14,7 +14,7 @@
       <input type="text" class="form-control" formControlName="age" placeholder="Age" aria-describedby="sizing-addon1"  [value]="player?.age"/>
     </div>
     <div class="dropdown">
-      <select id="skill-level">
+      <select id="skill-level" formControlName="skillLevel">
         <option *ngFor="let skillLevel of player?.skillLevels; let i = index" [value]="i" [selected]="i == player.skillLevel">
           {{skillLevel}}
         </option>

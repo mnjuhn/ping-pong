@@ -33,7 +33,7 @@ namespace PingPong.Models
         FirstName = "Uncle",
         LastName = "Bob",
         Age = 50,
-        SkillLevel = Player.Level.Expert,
+        SkillLevel = (int) Player.Level.Expert,
         email = "bob@gmail.com"
       }, new Player
       {
@@ -41,7 +41,7 @@ namespace PingPong.Models
         FirstName = "Jan",
         LastName = "Kirsten",
         Age = 40,
-        SkillLevel = Player.Level.Advanced,
+        SkillLevel = (int) Player.Level.Advanced,
         email = "jan@gmail.com",
       }, new Player
       {
@@ -49,7 +49,7 @@ namespace PingPong.Models
         FirstName = "Lil",
         LastName = "Jen",
         Age = 30,
-        SkillLevel = Player.Level.Beginner,
+        SkillLevel = (int) Player.Level.Beginner,
         email = "jen@gmail.com",
       }, new Player
       {
@@ -57,7 +57,7 @@ namespace PingPong.Models
         FirstName = "Big",
         LastName = "Ben",
         Age = 45,
-        SkillLevel = Player.Level.Intermediate,
+        SkillLevel = (int) Player.Level.Intermediate,
         email = "jan@gmail.com",
       });
     }

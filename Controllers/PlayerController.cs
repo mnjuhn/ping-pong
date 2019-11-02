@@ -69,10 +69,12 @@ namespace PingPong.Controllers
     {
       try
       {
+        Console.WriteLine("test3");
         var context = new PingPongContext();
-
+        Console.WriteLine("test1");
         // save new player
         context.Add(player);
+        Console.WriteLine("test2");
         context.SaveChanges();
       }
       catch (Exception e)
