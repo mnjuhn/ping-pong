@@ -9,6 +9,8 @@ import { PlayerDelete } from './player/player.delete';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormControl, FormGroupDirective } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const appRoutes: Routes = [
     { path: 'player', component: PlayerComponent },
@@ -31,7 +33,9 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      MatDialogModule
 
   ],
   providers: [],

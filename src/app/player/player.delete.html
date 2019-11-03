@@ -1,1 +1,19 @@
-<!doctype html>
+<!-- Modal -->
+<div class="modal show" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Player</h5>
+        <a href="#" class="close" data-dismiss="modal" aria-label="close"></a>
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        Are you sure you wish to delete this player?
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="close" data-dismiss="modal" aria-label="close"><button type="button" class="btn btn-primary">No</button></a>
+        <a href="#" class="close" data-dismiss="modal" aria-label="close"><button type="button" class="btn btn-primary" (click)="deletePlayer()">Yes</button></a>
+      </div>
+    </div>
+  </div>
+</div>

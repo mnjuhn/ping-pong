@@ -1,14 +1,34 @@
 <div style="width: 400px; margin: auto;">
   <h2>Players</h2>
-  <a href="/player-add" class="btn btn-default">Add New Player</a>
+  <a href="/player-add" class="btn btn-default"><button type="button" class="btn btn-primary">Add New Player</button></a>
   <div *ngIf="players">
     <hr>
-    <ul>
-      <li *ngFor="let player of players;">
-        {{player.firstName}} {{player.lastName}}
-        <a href="player/{{player.id}}" class="btn btn-default">Edit Player</a>
-        <a href="player/delete/{{player.id}}" class="btn btn-default">delete Player</a>
-      </li>
-    </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">Skill Level</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players;">
+          <td scope="row">{{player.firstName}}</td>
+          <td>{{player.lastName}}</td>
+          <td>{{player.email}}</td>
+          <td>{{player.age}}</td>
+          <td>{{player.skillLevel}}</td>
+          <td>
+            <a href="player/{{player.id}}" class="btn btn-default"><font color="blue">Edit</font></a>
+            <a href="player/delete/{{player.id}}" class="btn btn-default"><font color="red">Delete</font></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
   </div>
 </div>
