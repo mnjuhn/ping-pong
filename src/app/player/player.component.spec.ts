@@ -13,7 +13,7 @@ describe('PlayerService', () => {
 
             imports: [HttpClientModule, RouterTestingModule],
             declarations: [PlayerComponent],
-            providers: [PlayerService, PlayerModel]
+            providers: [PlayerService]
         }).compileComponents();
 
         let testBed = getTestBed();
@@ -25,7 +25,7 @@ describe('PlayerService', () => {
     it('Originally there should only be 4 Users', (done) => {
         myProvider.getAllPlayers().subscribe((players) => {
             expect(players.length).toEqual(4);
-            done()
+            done();
         });
     });
 
@@ -34,7 +34,7 @@ describe('PlayerService', () => {
             expect(player.firstName).toBe("Uncle");
             expect(player.lastName).toBe("Bob");
             expect(player.email).toBe("bob@gmail.com");
-            expect(player.age).toBe(51);
+            expect(player.age).toBe(50);
             done();
         });
     });
