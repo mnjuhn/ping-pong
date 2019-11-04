@@ -26,7 +26,7 @@ export class PlayerService {
         );
     }
 
-    public getAllPlayers(): Observable <PlayerModel[]> {
+    public getAllPlayers(): Observable<PlayerModel[]> {
         return this.httpService.get<PlayerModel[]>('http://localhost:5000/player').pipe(
             map(data => data.map(data => new PlayerModel().deserialize(data)))
         );

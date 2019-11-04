@@ -77,7 +77,6 @@ export class PlayerEditor implements OnInit {
         this.player.skillLevel = player.skillLevel;
 
         this.errors = this.player.validate();
-        alert(this.player.age);
         // if no errors insert player otherwise show errors in form
         if (this.errors && this.errors.length > 0) {
 

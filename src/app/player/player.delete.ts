@@ -31,7 +31,7 @@ export class PlayerDelete implements OnInit {
     }
 
     public deletePlayer() {
-        //this.playerService.deletePlayer(this.playerId).subscribe();
+        this.playerService.deletePlayer(this.playerId).subscribe();
         // redirect to main page
         location.replace('/player');
     }
