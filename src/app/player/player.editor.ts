@@ -35,6 +35,7 @@ export class PlayerEditor implements OnInit {
 
     public playerForm: FormGroup;
 
+    public errors: String[];
 
     constructor(fb: FormBuilder, private playerService: PlayerService, private route: ActivatedRoute) {
         this.playerForm = fb.group({
@@ -69,13 +70,21 @@ export class PlayerEditor implements OnInit {
     }
 
     submitForm(player) {
-        player.Id = this.playerId;
-        if (player.email && player.firstName && player.lastName) {
+        this.player.firstName = player.firstName;
+        this.player.lastName = player.lastName;
+        this.player.email = player.email;
+        this.player.age = player.age;
+        this.player.skillLevel = player.skillLevel;
 
-            this.player = player;
+        this.errors = this.player.validate();
+        alert(this.player.age);
+        // if no errors insert player otherwise show errors in form
+        if (this.errors && this.errors.length > 0) {
+
+        } else {
             this.updatePlayer();
+            // redirect to main page
+            location.replace('/player');
         }
-        // redirect to main page
-        location.replace('/player');
     }
 }

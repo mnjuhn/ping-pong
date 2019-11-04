@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
 using PingPong.Models;
-using System.Web.Http.Cors;
 
 namespace PingPong.Controllers
 {

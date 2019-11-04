@@ -1,0 +1,11 @@
+.sameline {
+  display: inline;
+}
+
+.left-of-screen {
+  float: right;
+}
+
+.red-font {
+  color:red;
+}

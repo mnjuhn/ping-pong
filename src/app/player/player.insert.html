@@ -1,5 +1,10 @@
 <div class="player-form">
   <h2>Add Player</h2>
+  <div id="errors">
+    <ul>
+      <li class="red-font" *ngFor="let error of errors">{{error}}</li>
+    </ul>
+  </div>
   <form name="form" [formGroup]="playerForm" (ngSubmit)=submitForm(playerForm.value) role="form">
     <div class="input-group input-group-lg">
       <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" aria-describedby="sizing-addon1" />
@@ -19,7 +24,6 @@
       {{skillLevel}}
     </option>
   </select>
-
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Submit</button>
